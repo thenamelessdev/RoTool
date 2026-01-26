@@ -11,5 +11,11 @@
   ],
   "permissions": [
     "tabs", "scripting"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.roblox.com/*"],
+      "js": ["badges.js"]
+    }
   ]
 }
