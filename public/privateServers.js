@@ -1,6 +1,7 @@
 setInterval(() => {
     const gameHyperlinks = document.getElementsByClassName("game-card-link");
-    if(!gameHyperlinks && location.href.endsWith("/home")) return console.warn("no game hyperlinks found");
+    if(!location.href.endsWith("/home")) return;
+    if(!gameHyperlinks) return console.warn("no game hyperlinks found");
 
     Array.from(gameHyperlinks).forEach(element => {
         if (element.querySelector(".rotool-show-priv-servers")) return;
