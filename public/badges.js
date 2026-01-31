@@ -7,7 +7,11 @@
         const json = await response.json();
         setInterval(() => {
             json.badges.forEach(badge => {
-                if(location.href.includes(badge.id)){
+                const url = location.href;
+                if(!url.includes("users")) return;
+                const parts = url.split("/");
+                const id = parts[4];
+                if(id == badge.id){
                     const displayNameElement = document.getElementById("profile-header-title-container-name");
                     if(!displayNameElement) return console.warn("display name element not found - RoTool");
                     if(displayNameElement.textContent.includes(badge.text)) return;
