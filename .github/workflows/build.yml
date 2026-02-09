@@ -1,0 +1,29 @@
+name: Build
+
+on:
+    push:
+    workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+
+            - name: Node js thing
+              uses: actions/setup-node@v4
+              with:
+                node-version: 20
+                cache: npm
+
+            - name: Build
+              run: |
+                npm ci
+                npm run build
+
+            - name: Upload
+              uses: actions/upload-artifact@v4
+              with:
+                name: build
+                path: dist/
